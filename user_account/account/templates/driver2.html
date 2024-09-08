@@ -84,27 +84,32 @@
 
 <div class="container">
     <h3>Driver Registration Form</h3>
-    <form name="registration" action="registration" method="POST" enctype="multipart/form-data">
+    <form method="POST">
         {% csrf_token %}
-        
-        <input type="text" name="DRIVER" placeholder="Driver Name" required>
-        <input type="tel" name="MOBILE NUMBER" placeholder="Mobile Number" required>
-        <input type="tel" name="LICENCE NUMBER" placeholder="Licence Number" required>
-        <input type="text" name="pass" placeholder="Enter The Driver ID" required>
+        <label for="name">Name:</label>
+        <input type="text" name="name" placeholder="Driver Name" required>
+        <label for="mobile">MOBILE NUMBER:</label>
+        <input type="tel" name="mobile" placeholder="Mobile Number" required>
+        <label for="licence">license-Number:</label>
+        <input type="tel" name="license" placeholder="Licence Number" required>
+        <label for="email">e-mail:</label>
         <input type="email" name="email" placeholder="Email" required>
-
-        <label>Upload Photo :</label>
+        <label for="did">driver id:</label>
+        <input type="text" name="did" placeholder="Driver Id" required>
+        <label for="password">password:</label>
+        <input type="text" name="password" placeholder="Password" required>
+        <label for="photo">Upload Photo :</label>
         <input type="file" name="photo" accept="image/*" required>
-        <button type="submit" class="btn">Register</button>
+        <button type="submit">submit </button>
+    </form>
         <p>or</p>
-        <a href="{% url 'home' %}">Cancel</a>
+        <a href="{% url 'add_d' %}">Cancel</a>
         <div class="messages">
             {% for message in messages %}
                 <p>{{ message }}</p>
             {% endfor %}
         </div>
-    
-    </form>
+
 </div>
 
 </body>

@@ -83,36 +83,45 @@
     <div class="container">
         <div class="header">
             <div class="header-left">
-                <h2>Home</h2>
+                <h2>driver </h2>
                 <p>Welcome, {{ request.user.username }}!</p>
             </div>
             <div class="header-right">
-                <a href="{% url 'edit' %}" class="edit-button">Edit</a>
+                <a href="{% url 'edit_driver' %}" class="edit-button">Edit</a>
                 <a href="{% url 'home' %}" class="logout-button">Back</a>
             </div>
         </div>
-        <h3>List of Items</h3>
+        <h3>List of Drivers</h3>
         <table>
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Description</th>
-                    <th>Price</th>
-            
+                    <th>licence</th>
+                    <th>mobile  </th>
+                    <th>Email</th>
+                    <th>Driver id</th>
+                    <th>password </th>
+                    <th>photo </th>
                 </tr>
             </thead>
             <tbody>
-                {% for item in items  %}
+                {% for driver in drivers  %}
                     <tr>
+                        <td>{{ driver.name }}</td>
+                        <td>{{ driver.mobile }}</td>
+                        <td>{{driver.license }}</td>
+                        <td>{{ driver.email }}</td>
+                        <td>{{ driver.did }}</td>
+                        <td>{{ driver.password }}</td>
+                        <td>{{ driver.photo }}</td>
                         <td>{{ item.name }}</td>
                         <td>{{ item.description }}</td>
-                        <td>${{ item.price }}</td>
-                        
+                        <td>{{ item.price }}</td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
-        <a href="{% url 'add' %}" class="create-button">Add Item</a>
+        <a href="{% url 'add_driver' %}" class="create-button">Add Driver</a>
     </div>
 </body>
 </html>

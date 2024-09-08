@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Item</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 15%;
+            margin: 20px auto;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label, input, textarea {
+            margin-bottom: 10px;
+        }
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+        button, a {
+            padding: 10px 20px;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        button {
+            background-color: #4CAF50;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        a {
+            background-color: #2196F3;
+        }
+        a:hover {
+            background-color: #1976D2;
+        }
+        h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Update Driver</h2>
+        <form method="post">
+            {% csrf_token %}
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" value="{{ driver.name }}"  required>
+            <label for="mobile">MOBILE NUMBER:</label>
+            <input type="tel" id="mobile" name="mobile" value="{{driver.mobile}}" required>
+            <label for="licence">license-Number:</label>
+            <input type="tel" id="licence" name="license" value="{{ driver.licence }}"  required>
+            <label for="email">e-mail:</label>
+            <input type="email" id="email" name="email" value="{{driver.email}}" required>
+            <label for="did">driver id:</label>
+            <input type="text" name="did" id="did" value="{{ driver.did}}" required>
+            <label for="password">password:</label>
+            <input type="text" name="password" id="password" value="{{ driver.password}}"  required>
+            <label for="photo">Upload Photo :</label>
+            <input type="file" name="photo" id="photo" value="{{ driver.photo}}" required>
+            <div class="button-container">
+                <button type="submit">Update</button>
+                <a href="{% url 'add_d' %}">Cancel</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

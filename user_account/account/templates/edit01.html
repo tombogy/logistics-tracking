@@ -50,6 +50,14 @@
         th {
             background-color: #f2f2f2;
         }
+        th.actions, td.actions {
+            text-align: center;
+        }
+        td.actions {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
         a {
             padding: 10px 20px;
             color: #fff;
@@ -63,19 +71,17 @@
         .edit-button:hover {
             background-color: #1976D2;
         }
+        .delete-button {
+            background-color: #e74c3c;
+        }
+        .delete-button:hover {
+            background-color: #c0392b;
+        }
         .logout-button {
             background-color: #4CAF50;
         }
         .logout-button:hover {
             background-color: #45a049;
-        }
-        .create-button {
-            background-color: #f39c12;
-            margin-top: 20px;
-            display: inline-block;
-        }
-        .create-button:hover {
-            background-color: #e67e22;
         }
     </style>
 </head>
@@ -87,32 +93,43 @@
                 <p>Welcome, {{ request.user.username }}!</p>
             </div>
             <div class="header-right">
-                <a href="{% url 'edit' %}" class="edit-button">Edit</a>
-                <a href="{% url 'home' %}" class="logout-button">Back</a>
+                <a href="{% url 'edit_driver' %}" class="edit-button"> Add</a>
+                <a href="{% url 'add_d' %}" class="logout-button">Back</a>
             </div>
         </div>
-        <h3>List of Items</h3>
+        <h3>Driver List</h3>
         <table>
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Description</th>
-                    <th>Price</th>
-            
+                    <th>licence</th>
+                    <th>mobile  </th>
+                    <th>Email</th>
+                    <th>Driver id</th>
+                    <th>password </th>
+                    <th>photo </th>
+                    <th class="actions">Actions</th>
                 </tr>
             </thead>
             <tbody>
-                {% for item in items  %}
+                {% for driver in drivers %}
                     <tr>
-                        <td>{{ item.name }}</td>
-                        <td>{{ item.description }}</td>
-                        <td>${{ item.price }}</td>
-                        
+                    <td>{{ driver.name }}</td>
+                    <td>{{ driver.mobile }}</td>
+                    <td>{{ driver.license }}</td>
+                    <td>{{ driver.email }}</td>
+                    <td>{{ driver.did }}</td>
+                    <td>{{ driver.password }}</td>
+                    <td>{{ driver.photo }}</td>
+                    <td class="actions">
+                        <a href="{% url 'update_driver' driver.id %}" class="edit-button">Update</a>
+                        <br>
+                        <a href="{% url 'delete_d' driver.id %}"  class="delete-button">Delete</a>
+                    </td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
-        <a href="{% url 'add' %}" class="create-button">Add Item</a>
     </div>
 </body>
 </html>

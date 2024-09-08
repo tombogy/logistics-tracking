@@ -112,7 +112,7 @@
                     <tr>
                         <td>{{ item.name }}</td>
                         <td>{{ item.description }}</td>
-                        <td>${{ item.price }}</td>
+                        <td>{{ item.price }}</td>
                         <td class="actions">
                             <a href="{% url 'update_item' item.id %}" class="edit-button">Update</a>
                             <a href="{% url 'delete' item.id %}" class="delete-button">Delete</a>

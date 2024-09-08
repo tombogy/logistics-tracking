@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Item</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 15%;
+            margin: 20px auto;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label, input, textarea {
+            margin-bottom: 10px;
+        }
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+        button, a {
+            padding: 10px 20px;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        button {
+            background-color: #4CAF50;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        a {
+            background-color: #2196F3;
+        }
+        a:hover {
+            background-color: #1976D2;
+        }
+        h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Update Item</h2>
+        <form method="post">
+            {% csrf_token %}
+
+            <label for="name">Name:</label>
+            <input type="text" id="name" value="{{ item.name }}" required>
+            <label for="mobile">MOBILE NUMBER:</label>
+            <input type="tel" id="mobile" value="{{ item.mobile }}" required>
+            <label for="licence">license-Number:</label>
+            <input type="tel" id="license" value="{{ item.licence }}" required>
+            <label for="email">e-mail:</label>
+            <input type="email" id="email" value="{{ item.email }}"  required>
+            <label for="did">driver id:</label>
+            <input type="text" id="did" value="{{ item.did }}"  required>
+            <label for="password">password:</label>
+            <input type="text" id="password" value="{{ item.password }}" required>
+            <label for="photo">Upload Photo :</label>
+            <input type="file" id="photo" value="{{ item.photo }}" required>
+            <div class="button-container">
+                <button type="submit">Update</button>
+                <a href="{% url 'edit_driver' %}">Cancel</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #e0f7fa, #e0e0e0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            width: 100%;
+        }
+        h3 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        label {
+            font-size: 14px;
+            color: #333;
+        }
+        input[type="text"], input[type="email"], input[type="tel"], input[type="password"], input[type="file"], input[type="date"], select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .btn {
+            padding: 10px 20px;
+            background: #03a9f4;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+        }
+        .btn:hover {
+            background: #0288d1;
+        }
+        button, a {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .messages {
+            margin-top: 15px;
+            color: red;
+        }
+        
+        a { 
+            text-decoration: none;
+            background-color: #2196F3;
+        }
+        a:hover {
+            background-color: #1976D2;
+        }
+        
+    </style>
+</head>
+<body align="center">
+
+<div class="container">
+    <h3>Driver Registration Form</h3>
+    <form method="POST">
+        {% csrf_token %}
+      
+        <label for="name">Name:</label>
+        <input type="text" name="name" value="{{ driver.name }}" required><br>
+    
+        <label for="mobile">Mobile:</label>
+        <input type="text" name="mobile" value="{{ driver.mobile }}" required><br>
+    
+        <label for="license">License:</label>
+        <input type="text" name="license" value="{{ driver.license }}" required><br>
+    
+        <label for="email">Email:</label>
+        <input type="email" name="email" value="{{ driver.email }}" required><br>
+    
+        <label for="did">Driver ID:</label>
+        <input type="text" name="did" value="{{ driver.did }}" required><br>
+    
+        <label for="password">Password:</label>
+        <input type="password" name="password" value="{{ driver.password }}" required><br>
+    
+        <label for="photo">Photo:</label>
+        <input type="file" name="photo"><br>
+        <div class="button-container">
+            <button type="submit">submit</button>
+            <a href="{% url 'home' %}">Cancel</a>
+        </div>
+    </form>
+</body>
+</html>
